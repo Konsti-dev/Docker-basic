@@ -1,0 +1,28 @@
+
+version: '3.3'
+
+services:
+  green:
+    build:
+      context: .
+    command:
+      - /bin/sh
+      - -c
+      - git clone https://github.com/Tobi-dev/gradle-checkstyle.git code && gradle check
+      - rm -rf code
+  red:
+    build:
+      context: .
+    command:
+      - /bin/sh
+      - -c
+      - git clone https://github.com/Konsti-dev/gradle-checkstyle.git code && gradle check
+      - rm -rf code
+  wrong-url:
+    build:
+      context: .
+    command:
+      - /bin/sh
+      - -c
+      - git clone https://github.com/Konsti-dev/gradle-checkstyleee.git code && gradle check
+      - rm -rf code      
